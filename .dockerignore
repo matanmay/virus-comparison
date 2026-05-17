@@ -1,0 +1,12 @@
+# Exclude the local vendor directory so it never overwrites the one
+# that Composer installs inside the container during `docker build`.
+# Without this, `COPY . .` would replace the freshly-resolved packages
+# (e.g. mongodb/mongodb 1.21.3) with the stale local copies (1.6.1).
+vendor/
+
+# Other files that should not be sent to the Docker build context
+.env
+.git
+.gitignore
+.vscode
+*.md
